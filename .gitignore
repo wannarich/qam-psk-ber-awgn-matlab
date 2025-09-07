@@ -1,0 +1,32 @@
+# --- Common ignores ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+build/
+dist/
+*.log
+logs/
+.cache/
+tmp/
+.ipynb_checkpoints/
+
+# --- Data and models ---
+data/**
+!data/.gitkeep
+!data/README.md
+models/**
+!models/.gitkeep
+!models/README.md
+
+# --- MATLAB specific ---
+*.asv
+*.autosave
+*.m~*
+*.mex*
+*.mltbx
+*_ert_rtw/
+slprj/
+sccprj/
+*.mat
