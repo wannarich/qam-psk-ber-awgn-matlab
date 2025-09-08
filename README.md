@@ -4,6 +4,7 @@
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2023b-orange.svg)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows--PowerShell-blue.svg)
+![Release](https://img.shields.io/github/v/release/AlbertoMarquillas/qam-psk-ber-awgn-matlab)
 
 MATLAB toolkit to simulate **BER vs. Eb/N0** for **QPSK (4-QAM)**, **8-PSK (rectangular)**, and **16-QAM** over **AWGN**. Includes a CLI-style demo and exportable plots.
 
